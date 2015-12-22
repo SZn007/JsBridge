@@ -99,7 +99,8 @@
     //提供给native使用,
     function _dispatchMessageFromNative(messageJSON) {
         setTimeout(function() {
-            var message = JSON.parse(messageJSON);
+            var singleQuote = messageJSON.replace("*#06#","\'");
+            var message = JSON.parse(singleQuote);
             var responseCallback;
             //java call finished, now need to call js callback function
             if (message.responseId) {
